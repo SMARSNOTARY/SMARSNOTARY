@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    tools:context="com.example.sandynasandaire.smarsnotary.SplashSceenActivity">
+
+    <ImageView
+        android:id="@+id/Ivsplash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/logonotaire2"/>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"></android.support.v7.widget.Toolbar>
+
+</RelativeLayout>
