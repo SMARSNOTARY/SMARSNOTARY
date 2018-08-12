@@ -21,8 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SmarsNotaryActivity" />
+        <activity android:name=".SmarsNotaryActivity"/>
         <activity android:name=".SplashSceenActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,7 +58,8 @@
             android:name=".Navigation_drawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CirconscriptionActivity"></activity>
+        <activity android:name=".CirconscriptionActivity" />
+        <activity android:name=".Port_au_PrinceActivity" />
     </application>
 
 </manifest>

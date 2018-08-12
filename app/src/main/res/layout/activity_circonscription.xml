@@ -1,26 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sandynasandaire.smarsnotary.CirconscriptionActivity">
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button5"
+        android:layout_marginTop="39dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Port-au-Prince"
+        android:textColor="@android:color/white"/>
 
-        <Button
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Croix-des-Bouquets"
+        android:textColor="@android:color/white" />
 
-        <Button
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button3"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="26dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Coteaux"
+        android:textColor="@android:color/white" />
 
-    </GridView>
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button5"
+        android:layout_below="@+id/button5"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Cap-Haitien"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button6"
+        android:layout_centerVertical="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="St-Marc"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button7"
+        android:layout_below="@+id/button7"
+        android:layout_marginTop="28dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Petit-Goave"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button8"
+        android:layout_below="@+id/button8"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Jacmel"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button9"
+        android:layout_marginBottom="28dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Port-de-Paix"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button6"
+        android:layout_alignStart="@+id/button4"
+        android:background="@color/colorPrimaryDark"
+        android:text="Cayes"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button6"
+        android:layout_alignStart="@+id/button11"
+        android:background="@color/colorPrimaryDark"
+        android:text="Gonaives"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button12"
+        android:layout_alignTop="@+id/button7"
+        android:background="@color/colorPrimaryDark"
+        android:text="Fort-Liberté"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button13"
+        android:layout_alignTop="@+id/button8"
+        android:background="@color/colorPrimaryDark"
+        android:text="Hinche"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button14"
+        android:layout_alignTop="@+id/button9"
+        android:background="@color/colorPrimaryDark"
+        android:text="Mirebalais"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button15"
+        android:layout_alignTop="@+id/button10"
+        android:background="@color/colorPrimaryDark"
+        android:text="Miragoane"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button14"
+        android:layout_alignTop="@+id/button9"
+        android:background="@color/colorPrimaryDark"
+        android:text="Petite Riviere de Nippes"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button18"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button15"
+        android:layout_alignTop="@+id/button10"
+        android:background="@color/colorPrimaryDark"
+        android:text="Anse-a-Veau"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button19"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button14"
+        android:layout_alignTop="@+id/button9"
+        android:background="@color/colorPrimaryDark"
+        android:text="Grande Riviere du Nord"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button20"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button15"
+        android:layout_alignTop="@+id/button10"
+        android:background="@color/colorPrimaryDark"
+        android:text="Jeremie"
+        android:textColor="@android:color/white" />
 
 
-</LinearLayout>
+
+</GridView>
