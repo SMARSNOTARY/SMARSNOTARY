@@ -3,6 +3,10 @@ package com.example.sandynasandaire.smarsnotary;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -61,7 +65,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private TextView singup;
 
+    private static final int Alt = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,11 +93,64 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
+
             }
         });
 
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        singup = (TextView)findViewById(R.id.textView3);
+
+        singup.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(Alt);
+            }
+        });
+    }
+
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+
+        switch (id)
+        {
+            case Alt:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Sign Up");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Notaire", new NotOnCliCk());
+                builder.setNegativeButton("Client", new CliOnCliCk());
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+        }
+        return super.onCreateDialog(id);
+    }
+
+    private final class NotOnCliCk implements DialogInterface.OnClickListener{
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            startActivity(new Intent(LoginActivity.this, RegisterNotary.class));
+        }
+    }
+
+
+    private final class CliOnCliCk implements DialogInterface.OnClickListener{
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
+            startActivity(new Intent(LoginActivity.this, RegisterClient.class));
+        }
+    }
+
+    public void mEmailSignInButton(View view){
+        Intent i=new Intent(this,SmarsNotaryActivity.class);
+        startActivity(i);
     }
 
     private void populateAutoComplete() {
