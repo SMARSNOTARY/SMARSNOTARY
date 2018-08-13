@@ -21,8 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SmarsNotaryActivity" />
+        <activity android:name=".SmarsNotaryActivity"/>
         <activity android:name=".SplashSceenActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,17 +47,19 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="FAKE-KEY" />
+            android:value="AlzaSyAVz58aaVU-7NeS4XtnVUgbRwjy78GpHzU" />
 
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".MainRegisterActivity"></activity>
+        <activity android:name=".MainRegisterActivity" />
         <activity android:name=".login_Smarnotary" />
         <activity
             android:name=".Navigation_drawer"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CirconscriptionActivity" />
+        <activity android:name=".Port_au_PrinceActivity" />
     </application>
 
 </manifest>
