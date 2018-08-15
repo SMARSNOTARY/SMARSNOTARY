@@ -31,4 +31,5 @@
     <string name="title_flowdetails_list">Items</string>
     <string name="title_flowdetails_detail">FlowDetails Detail</string>
     <string name="title_activity_message">MessageActivity</string>
+    <string name="title_activity_acceuil">AcceuilActivity</string>
 </resources>

@@ -58,8 +58,15 @@
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CirconscriptionActivity" />
+        <activity android:name=".RegisterNotary" />
+        <activity android:name=".RegisterClient" />
+
         <activity android:name=".Port_au_PrinceActivity" />
-        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".MessageActivity" />
+        <activity
+            android:name=".AcceuilActivity"
+            android:label="@string/title_activity_acceuil"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
