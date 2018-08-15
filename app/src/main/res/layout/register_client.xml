@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,6 +26,9 @@
         android:ems="10"
         android:hint="First-Name"
         android:inputType="textPersonName"
+        android:textColor="?android:attr/colorForeground"
+        android:textSize="18sp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="132dp" />
 
@@ -37,6 +41,8 @@
         android:ems="10"
         android:hint="Last-Name"
         android:inputType="textPersonName"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="186dp" />
 
@@ -49,6 +55,8 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="232dp" />
 
@@ -61,6 +69,8 @@
         android:ems="10"
         android:hint="Your Paswword"
         android:inputType="textPassword"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="278dp" />
 
@@ -81,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignStart="@+id/Ivsplash"
-        android:layout_below="@+id/Ivsplash"
+        android:layout_below="@+id/imageView3"
         android:text="CLIENTS"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -101,5 +111,13 @@
         android:textColor="@color/colorPrimaryDark"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="416dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
 </RelativeLayout>
