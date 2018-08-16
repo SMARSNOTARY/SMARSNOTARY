@@ -13,6 +13,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -52,14 +53,21 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".MainRegisterActivity" />
-        <activity android:name=".login_Smarnotary" />
+        <!-- <activity android:name=".login_Smarnotary" /> -->
         <activity
             android:name=".Navigation_drawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CirconscriptionActivity" />
-        <activity android:name=".Port_au_PrinceActivity" />
-        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".RegisterNotary" />
+        <activity android:name=".RegisterClient" />
+        <!-- <activity android:name=".Port_au_PrinceActivity" /> -->
+        <activity android:name=".MessageActivity" />
+        <activity
+            android:name=".AcceuilActivity"
+            android:label="@string/title_activity_acceuil"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ListeNotaireActivity"></activity>
     </application>
 
 </manifest>
