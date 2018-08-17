@@ -76,19 +76,6 @@
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="337dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/Ivsplash"
-        android:layout_below="@+id/Ivsplash"
-        android:text="CLIENTS"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="43dp" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="190dp"
