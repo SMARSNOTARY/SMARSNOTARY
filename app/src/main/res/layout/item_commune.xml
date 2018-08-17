@@ -4,10 +4,19 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/tvNomCommune"
         android:layout_width="match_parent"
-        android:text="NAME"
-        android:textColor="#000"
         android:layout_height="wrap_content"
-        android:id="@+id/tvNomCommune"/>
+        android:background="@drawable/shape_commune"
+        android:backgroundTint="#FF8F0714"
+        android:fontFamily="serif"
+        android:paddingLeft="5dp"
+        android:text="NAME"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="normal" />
 
 </RelativeLayout>

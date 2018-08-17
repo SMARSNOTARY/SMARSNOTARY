@@ -16,10 +16,22 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
-        android:background="@drawable/home"
+        android:background="@drawable/home2"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
         android:textColor="@color/colorPrimaryDark" />
 
+
+    <Button
+        android:id="@+id/btnApropos"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/btnGps"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/apropos"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="@color/colorPrimaryDark" />
 
     <Button
         android:id="@+id/btnGps"
@@ -44,17 +56,5 @@
         android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
         android:textColor="@color/colorPrimaryDark" />
 
-
-    <Button
-        android:id="@+id/btnApropos"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
-        android:layout_below="@id/btnGps"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/apropos"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
-        android:textColor="@color/colorPrimaryDark" />
 
 </RelativeLayout>
