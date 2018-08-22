@@ -8,10 +8,15 @@
     tools:context="com.example.sandynasandaire.smarsnotary.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <FrameLayout
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_acceuil" />
+
 
 </android.support.constraint.ConstraintLayout>

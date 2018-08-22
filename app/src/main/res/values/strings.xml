@@ -32,4 +32,8 @@
     <string name="title_flowdetails_detail">FlowDetails Detail</string>
     <string name="title_activity_message">MessageActivity</string>
     <string name="title_activity_acceuil">AcceuilActivity</string>
+    <string name="title_activity_profil_notaire">ProfilNotaireActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

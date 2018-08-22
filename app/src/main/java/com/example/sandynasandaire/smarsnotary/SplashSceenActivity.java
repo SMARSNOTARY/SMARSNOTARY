@@ -38,7 +38,7 @@ public class SplashSceenActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 	                /* Create an Intent that will start the Menu-Activity. */
-                        Intent mainIntent = new Intent(SplashSceenActivity.this, CirconscriptionActivity.class);
+                        Intent mainIntent = new Intent(SplashSceenActivity.this, ProfilNotaireActivity.class);
                         SplashSceenActivity.this.startActivity(mainIntent);
                         SplashSceenActivity.this.finish();
                        // overridePendingTransition(R.anim.fadein, R.anim.fadeout);
