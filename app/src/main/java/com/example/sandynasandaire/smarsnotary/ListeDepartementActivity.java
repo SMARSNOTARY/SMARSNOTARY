@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.example.sandynasandaire.smarsnotary.adapter.CommuneAdapter;
-import com.example.sandynasandaire.smarsnotary.model.Commune;
+import com.example.sandynasandaire.smarsnotary.adapter.DepartementAdapter;
+import com.example.sandynasandaire.smarsnotary.model.Departement;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -21,38 +21,42 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-public class CirconscriptionActivity extends AppCompatActivity {
+public class ListeDepartementActivity extends AppCompatActivity {
 
-    private ArrayList<Commune> Liste_commune;
-    private CommuneAdapter communeadapter;
-    GridView gvCommune;
+
+    private ArrayList<Departement> Liste_departement;
+    private DepartementAdapter departementadapter;
+    GridView gvDepartement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_circonscription);
+        setContentView(R.layout.activity_liste_departement);
 
-        gvCommune = findViewById(R.id.gvCommune);
-        gvCommune.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        gvDepartement = findViewById(R.id.gvDepartement);
+        gvDepartement.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Commune objCommune = (Commune) gvCommune.getItemAtPosition(i);
-                Intent intent = new Intent(getApplicationContext(), ListeNotaireActivity.class);
-                intent.putExtra("selected_commune", objCommune);
+                Departement objDepartement = (Departement) gvDepartement.getItemAtPosition(i);
+                Intent intent = new Intent(getApplicationContext(), CirconscriptionActivity.class);
+                intent.putExtra("selected_departement", objDepartement);
                 startActivity(intent);
             }
         });
-        get_commune();
-    }
 
-    private void get_commune() {
-        Liste_commune = new ArrayList<>();
-        communeadapter = new CommuneAdapter(getApplicationContext(),Liste_commune );
-        gvCommune.setAdapter(communeadapter);
+    get_departement();
+}
 
-        String apiLink= "https://simenonline.com/SMARSNOTARY/commune/commune.php?dept=1";
+
+    private  void get_departement() {
+        Liste_departement = new ArrayList<>();
+        departementadapter = new DepartementAdapter(getApplicationContext(),Liste_departement );
+        gvDepartement.setAdapter(departementadapter);
+
+        String apiLink= "https://simenonline.com/SMARSNOTARY/departement/departement.php";
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
-        client.get(apiLink, new JsonHttpResponseHandler(){
+        client.post(apiLink, new JsonHttpResponseHandler(){
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -61,8 +65,9 @@ public class CirconscriptionActivity extends AppCompatActivity {
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
-                    communeadapter.addAll(Commune.fromJSONArray(json.getJSONArray("response")));
-                    Log.d("DEBUG APP: ", Liste_commune.toString());
+
+                    departementadapter.addAll(Departement.fromJSONArray(json.getJSONArray("response")));
+                    Log.d("DEBUG APP: ", Liste_departement.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

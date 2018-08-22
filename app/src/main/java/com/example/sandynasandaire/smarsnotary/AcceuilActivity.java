@@ -20,8 +20,8 @@ public class AcceuilActivity extends AppCompatActivity {
 
        //
 
-        Button btnAnnuaire = (Button) findViewById(R.id.btnAnnuaire);
-        btnAnnuaire.setOnClickListener(new View.OnClickListener() {
+       // Button btnAnnuaire = (Button) findViewById(R.id.btnAnnuaire);
+      /*  btnAnnuaire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CirconscriptionActivity.class);
@@ -35,7 +35,7 @@ public class AcceuilActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
     }
 
 }

@@ -5,12 +5,15 @@
 
     <TextView
         android:id="@+id/tvNomCommune"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="110dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/shape_commune"
         android:backgroundTint="#FF8F0714"
         android:fontFamily="serif"
-        android:paddingLeft="5dp"
+        android:paddingLeft="3dp"
+        android:paddingTop="45dp"
         android:text="NAME"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
