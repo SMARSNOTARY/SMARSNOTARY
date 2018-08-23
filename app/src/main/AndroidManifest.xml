@@ -71,8 +71,8 @@
         <activity android:name=".ListeDepartementActivity" />
         <activity android:name=".DepartementCommuneActivity" />
         <activity
-            android:name=".ProfilNotaireActivity"
-            android:label="@string/title_activity_profil_notaire"></activity>
+            android:name=".ProfilActivity"
+            android:label="@string/title_activity_profil"></activity>
     </application>
 
 </manifest>

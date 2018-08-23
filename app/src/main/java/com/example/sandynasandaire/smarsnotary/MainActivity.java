@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Acceuil");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnAnnuaire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CirconscriptionActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ListeDepartementActivity.class);
                 startActivity(intent);
             }
         });

@@ -5,8 +5,10 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -22,6 +24,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -86,6 +89,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+//        toolbar.setTitle("Connexion");
+//        getSupportActionBar().setTitle("Connexion");
+
         // Set up the login form.
         //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -142,10 +151,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
-                    if(json.getJSONArray("response").getJSONObject(0).getString("key")=="SUCCESS"){
-                        Toast.makeText(LoginActivity.this, "Succes", Toast.LENGTH_SHORT).show();
+                    System.out.println(array.getJSONObject(0).getString("key"));
+                    if(array.getJSONObject(0).getString("key") != null){
+                        SharedPreferences mSettings = getApplicationContext().getSharedPreferences("LOGIN_USER_INFO", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = mSettings.edit();
+                        editor.putString("iduser", array.getJSONObject(0).getString("iduser").toString());
+
+                        editor.putString("type_User", array.getJSONObject(0).getString("type_User").toString());
+
+                        editor.putString("telephone", array.getJSONObject(0).getString("telephone").toString());
+
+                        editor.putString("email", array.getJSONObject(0).getString("email").toString());
+
+                        editor.putString("photo", array.getJSONObject(0).getString("photo").toString());
+
+                        editor.putString("create_user", array.getJSONObject(0).getString("create_user").toString());
+
+                        editor.putString("update_user", array.getJSONObject(0).getString("update_user").toString());
+
+                        editor.apply();
+
+                        System.out.println("RESULT : "+array.getJSONObject(0).getString("key").toString());
+                        Toast.makeText(LoginActivity.this, "RESULT : "+array.getJSONObject(0).getString("key").toString(), Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(LoginActivity.this, "Essayer avec un compte enregistrement...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Erreur de connexion, verifier credential", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

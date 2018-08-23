@@ -1,6 +1,8 @@
 package com.example.sandynasandaire.smarsnotary;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +18,10 @@ public class SplashSceenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_sceen);
+        final SharedPreferences mSettings = getApplicationContext().getSharedPreferences("LOGIN_USER_INFO", Context.MODE_PRIVATE);
 
-                //HideNotificationBar
+
+        //HideNotificationBar
                // requestWindowFeature(Window.FEATURE_NO_TITLE);
                 //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                    //     WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -38,9 +42,16 @@ public class SplashSceenActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 	                /* Create an Intent that will start the Menu-Activity. */
-                        Intent mainIntent = new Intent(SplashSceenActivity.this, ProfilNotaireActivity.class);
+	                if(mSettings.getString("iduser", null) == null){
+                        Intent mainIntent = new Intent(SplashSceenActivity.this, MainActivity.class);
                         SplashSceenActivity.this.startActivity(mainIntent);
                         SplashSceenActivity.this.finish();
+                    }else{
+                        Intent mainIntent = new Intent(SplashSceenActivity.this, ListeDepartementActivity.class);
+                        SplashSceenActivity.this.startActivity(mainIntent);
+                        SplashSceenActivity.this.finish();
+                    }
+
                        // overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     }
                 }, SPLASH_DISPLAY_LENGTH);

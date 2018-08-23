@@ -3,6 +3,7 @@ package com.example.sandynasandaire.smarsnotary;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,13 +34,17 @@ public class DepartementCommuneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_departement_commune);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Liste Departement");
+
 
         gvDepartementCommune = findViewById(R.id.gvDepartementCommune);
         gvDepartementCommune.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 DepartementCommune objDepartementCommune = (DepartementCommune) gvDepartementCommune.getItemAtPosition(i);
-                Intent intent = new Intent(getApplicationContext(), DepartementCommuneActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CirconscriptionActivity.class);
                 intent.putExtra("selected_departement_commune", objDepartementCommune);
                 startActivity(intent);
             }
