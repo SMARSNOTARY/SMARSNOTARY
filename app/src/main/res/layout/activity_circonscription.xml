@@ -7,11 +7,28 @@
     tools:context="com.example.sandynasandaire.smarsnotary.CirconscriptionActivity">
 
     <GridView
+        android:id="@+id/gvCommune"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gvCommune"
-        android:numColumns="2">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginTop="19dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="1dp">
 
-   </GridView>
+
+    </GridView>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/miragoane" />
 
 </RelativeLayout>

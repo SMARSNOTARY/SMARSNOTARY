@@ -20,7 +20,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logonotaire2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -70,7 +70,12 @@
             android:name=".AcceuilActivity"
             android:label="@string/title_activity_acceuil"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ListeNotaireActivity"></activity>
+        <activity android:name=".ListeNotaireActivity" />
+        <activity android:name=".ListeDepartementActivity" />
+        <activity android:name=".DepartementCommuneActivity" />
+        <activity
+            android:name=".ProfilNotaireActivity"
+            android:label="@string/title_activity_profil_notaire"></activity>
     </application>
 
 </manifest>

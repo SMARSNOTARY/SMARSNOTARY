@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="First-Name"
+                android:hint="First-Name :"
                 android:inputType="textPersonName"
                 android:textColorHint="@android:color/white" />
 
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Last-Name"
+            android:hint="Last-Name :"
             android:inputType="textPersonName"
             android:textColorHint="@android:color/white" />
 
@@ -70,8 +70,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Date de Naissance"
-                android:inputType="textPersonName"
+                android:hint="Date de Naissance (yyyy-mm-dd) :"
+                android:digits="1234567890-"
+                android:maxLength="10"
+                android:inputType="date"
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
@@ -85,7 +87,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Téléphone"
+                android:hint="Téléphone :"
+                android:digits="1234567890+"
                 android:inputType="phone"
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -124,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Your Paswword"
+                android:hint="Your Paswword :"
                 android:inputType="textPassword"
                 android:textColorHint="@android:color/white"
                 />
@@ -142,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Confirm your Password"
+                android:hint="Confirm your Password :"
                 android:inputType="textPassword"
                 android:textColorHint="@android:color/white"
                 />
