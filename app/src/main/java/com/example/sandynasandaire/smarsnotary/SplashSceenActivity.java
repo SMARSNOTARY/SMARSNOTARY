@@ -45,9 +45,15 @@ public class SplashSceenActivity extends AppCompatActivity {
                         SplashSceenActivity.this.startActivity(mainIntent);
                         SplashSceenActivity.this.finish();
                     }else{
-                        Intent mainIntent = new Intent(SplashSceenActivity.this, MainActivity.class);
-                        SplashSceenActivity.this.startActivity(mainIntent);
-                        SplashSceenActivity.this.finish();
+                        if(mSettings.getString("type_User", null).toString().equals("CLIENT")){
+                            Intent mainIntent = new Intent(SplashSceenActivity.this, MainActivity.class);
+                            SplashSceenActivity.this.startActivity(mainIntent);
+                            SplashSceenActivity.this.finish();
+                        }else{
+                            Intent mainIntent = new Intent(SplashSceenActivity.this, MainNotaireActivity.class);
+                            SplashSceenActivity.this.startActivity(mainIntent);
+                            SplashSceenActivity.this.finish();
+                        }
                     }
                        // overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     }

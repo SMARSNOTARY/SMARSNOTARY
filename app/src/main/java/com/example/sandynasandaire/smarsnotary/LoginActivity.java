@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -85,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private TextView singup;
+    ProgressDialog progressDialog;
 
     private static final int Alt = 10;
     @Override
@@ -99,7 +101,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Set up the login form.
         //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        progressDialog =new ProgressDialog(LoginActivity.this);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Connexion en cours...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+
         mMailView = (EditText) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
@@ -119,9 +126,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                login_user(mMailView.getText().toString(), mPasswordView.getText().toString());
-                //Intent intent = new Intent(getApplicationContext(), AcceuilActivity.class);
-                //startActivity(intent);
+                if(mMailView.getText().toString().equals("") || mPasswordView.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, "Numero telephone ou mot de passe oublie...", Toast.LENGTH_SHORT).show();
+                }else{
+                     progressDialog.show();
+                    login_user(mMailView.getText().toString(), mPasswordView.getText().toString());
+                }
             }
         });
 
@@ -140,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void login_user(String email, String password) {
-        String apiLink= "https://simenonline.com/SMARSNOTARY/login/login.php";
+        String apiLink = "https://simenonline.com/SMARSNOTARY/login/login.php";
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
         RequestParams params = new RequestParams();
         params.put("telephone", email);
@@ -151,17 +161,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                //Object-->(response) --> JSonArray --> Object
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
-                    System.out.println(array.getJSONObject(0).getString("key"));
-                    if(array.getJSONObject(0).getString("key") != null){
+                    if(array.getJSONObject(0).getString("key").equals("SUCCESS")){
+                        progressDialog.dismiss();
                         SharedPreferences mSettings = getApplicationContext().getSharedPreferences("LOGIN_USER_INFO", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = mSettings.edit();
                         editor.putString("iduser", array.getJSONObject(0).getString("iduser").toString());
 
-                        editor.putString("type_User", array.getJSONObject(0).getString("type_User").toString());
+                        editor.putString("type_User", array.getJSONObject(0).getString("type_user").toString());
 
                         editor.putString("telephone", array.getJSONObject(0).getString("telephone").toString());
 
@@ -169,27 +178,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                         editor.putString("photo", array.getJSONObject(0).getString("photo").toString());
 
-                        editor.putString("create_user", array.getJSONObject(0).getString("create_user").toString());
+                        editor.putString("create_user", array.getJSONObject(0).getString("created_user").toString());
 
-                        editor.putString("update_user", array.getJSONObject(0).getString("update_user").toString());
+                        editor.putString("update_user", array.getJSONObject(0).getString("updated_user").toString());
 
                         editor.apply();
-
                         System.out.println("RESULT : "+array.getJSONObject(0).getString("key").toString());
                         Toast.makeText(LoginActivity.this, "RESULT : "+array.getJSONObject(0).getString("key").toString(), Toast.LENGTH_SHORT).show();
+                        if(array.getJSONObject(0).getString("type_user").toString().equals("CLIENT")){
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finishAffinity();
+                        }else{
+                            startActivity(new Intent(getApplicationContext(), MainNotaireActivity.class));
+                            finishAffinity();
+                        }
                     }else{
-                        Toast.makeText(LoginActivity.this, "Erreur de connexion, verifier credential", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "Erreur, essayer a nouveau...", Toast.LENGTH_SHORT).show();
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(LoginActivity.this, "Erreur, esayer a nouveau 1.0...", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                    Toast.makeText(LoginActivity.this,"Error!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                Toast.makeText(LoginActivity.this, "Erreur, esayer a nouveau...", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                Toast.makeText(LoginActivity.this,"Erreur de connexion....!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -236,13 +255,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         startActivity(i);
     }
 
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
 
-        getLoaderManager().initLoader(0, null, this);
-    }
+
+
+
+
+
+
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -274,7 +293,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                            @NonNull int[] grantResults) {
         if (requestCode == REQUEST_READ_CONTACTS) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
+
             }
         }
     }
