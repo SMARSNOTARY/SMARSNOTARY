@@ -1,105 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:background="#8f0714">
-
-    <ImageView
-        android:id="@+id/Ivsplash"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logonotaire2" />
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="vertical">
 
 
-    <EditText
-        android:id="@+id/editText6"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/Ivsplash"
-        android:layout_marginTop="53dp"
-        android:ems="10"
-        android:hint="First-Name"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="132dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="#8f0714">
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText6"
-        android:ems="10"
-        android:hint="Last-Name"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="186dp" />
+        <ImageView
+            android:id="@+id/Ivsplash"
+            android:layout_width="94dp"
+            android:layout_height="81dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/logonotaire2" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="232dp" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText4"
-        android:ems="10"
-        android:hint="Your Paswword"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="278dp" />
+            <EditText
+                android:id="@+id/idfirstnamenotaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="First-Name"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/white" />
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText5"
-        android:ems="10"
-        android:hint="Confirm your Password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="337dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/Ivsplash"
-        android:layout_below="@+id/Ivsplash"
-        android:text="CLIENTS"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="43dp" />
+        </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="190dp"
-        android:layout_height="49dp"
-        android:layout_below="@+id/editText7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:background="@android:color/white"
-        android:text="Register"
-        android:textColor="@color/colorPrimaryDark"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="416dp" />
 
-</RelativeLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idlastnamenotaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Last-Name"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/white" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idnifnotaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nif"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idadressnotaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Adresse Cabinet"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idcomune"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:ems="10"
+                android:hint="Commune"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@android:color/white"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spCommune"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/iddatecommission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="DAte commission"
+                android:inputType="textPassword"
+                android:textColorHint="@android:color/white"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loading"
+            android:visibility="gone">
+
+        </ProgressBar>
+
+        <Button
+            android:id="@+id/idbtnRegisternotaire"
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_button"
+            android:text="Register"
+            android:textColor="@color/colorPrimaryDark" />
+
+
+    </LinearLayout>
+
+</ScrollView>
+
