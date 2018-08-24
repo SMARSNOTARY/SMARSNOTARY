@@ -3,11 +3,9 @@ package com.example.sandynasandaire.smarsnotary;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 
 public class SplashSceenActivity extends AppCompatActivity {
 
@@ -43,15 +41,14 @@ public class SplashSceenActivity extends AppCompatActivity {
                     public void run() {
 	                /* Create an Intent that will start the Menu-Activity. */
 	                if(mSettings.getString("iduser", null) == null){
-                        Intent mainIntent = new Intent(SplashSceenActivity.this, MainActivity.class);
+                        Intent mainIntent = new Intent(SplashSceenActivity.this, LoginActivity.class);
                         SplashSceenActivity.this.startActivity(mainIntent);
                         SplashSceenActivity.this.finish();
                     }else{
-                        Intent mainIntent = new Intent(SplashSceenActivity.this, ListeDepartementActivity.class);
+                        Intent mainIntent = new Intent(SplashSceenActivity.this, MainActivity.class);
                         SplashSceenActivity.this.startActivity(mainIntent);
                         SplashSceenActivity.this.finish();
                     }
-
                        // overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     }
                 }, SPLASH_DISPLAY_LENGTH);
