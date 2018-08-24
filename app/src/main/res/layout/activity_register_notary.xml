@@ -90,24 +90,6 @@
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@android:color/white">
-
-            <EditText
-                android:id="@+id/idcomune"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:ems="10"
-                android:hint="Commune"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@android:color/white"
-                />
-        </android.support.design.widget.TextInputLayout>
-
         <Spinner
             android:id="@+id/spCommune"
             android:layout_width="fill_parent"
@@ -133,6 +115,74 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="youremail@domain.com"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@android:color/white"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idtelephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:digits="1234567890+"
+                android:hint="50931281904"
+                android:inputType="text"
+                android:textColorHint="@android:color/white"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Mot de passe:"
+                android:inputType="textPassword"
+                android:textColorHint="@android:color/white"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
+
+            <EditText
+                android:id="@+id/idconfirmpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Confirmer mot de passe:"
+                android:inputType="textPassword"
+                android:textColorHint="@android:color/white"
+                />
+
+        </android.support.design.widget.TextInputLayout>
 
         <ProgressBar
             android:layout_width="match_parent"
