@@ -14,7 +14,6 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -74,8 +73,12 @@
         <activity android:name=".ListeDepartementActivity" />
         <activity android:name=".DepartementCommuneActivity" />
         <activity
-            android:name=".ProfilNotaireActivity"
-            android:label="@string/title_activity_profil_notaire"></activity>
+            android:name=".ProfilActivity"
+            android:label="@string/title_activity_profil" />
+        <activity
+            android:name=".MainNotaireActivity"
+            android:label="@string/title_activity_main_notaire"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -33,11 +33,12 @@
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:id="@+id/email"
+            android:digits="1234567890+"
             android:inputType="textPersonName"
             android:drawableLeft="@drawable/ic_menu_camera"
             android:layout_margin="5dp"
             android:background="@drawable/edtlogin"
-            android:hint=" Nom utilisateur"/>
+            android:hint="TELEPHONE : "/>
 
         <EditText
             android:paddingStart="5dp"
@@ -63,9 +64,6 @@
             android:layout_height="wrap_content"
             />
 
-
-
-
         <TextView
             android:id="@+id/tvForgetPass"
             android:layout_width="match_parent"
@@ -84,10 +82,6 @@
             android:gravity="center"
             android:layout_marginTop="5dp"/>
 
-
-
-
-
     </LinearLayout>
 
     <Button
@@ -97,7 +91,6 @@
         android:text="Créer Compte"
         android:id="@+id/signup"
         android:layout_height="wrap_content"
-
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp" />
