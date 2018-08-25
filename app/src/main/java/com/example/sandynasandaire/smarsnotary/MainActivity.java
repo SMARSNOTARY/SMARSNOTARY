@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnAcceuil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RendezVousActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnApropos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                 startActivity(intent);
             }
         });

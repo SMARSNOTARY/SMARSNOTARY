@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8f0714"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.sandynasandaire.smarsnotary.MainNotaireActivity"
     tools:showIn="@layout/app_bar_main_notaire">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btnAcceuil"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/home"
+        android:text="NOTAIRE"
+        android:textColor="#fff" />
+
+
+    <Button
+        android:id="@+id/btnApropos"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/btnGps"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/apropos"
+        android:text="PROFIL"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/btnGps"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_alignBottom="@+id/btnAcceuil"
+        android:layout_toEndOf="@+id/btnAnnuaire"
+        android:background="@drawable/placeholder"
+        android:text="MESSAGE"
+        android:textColor="#fff" />
+
+    <!-- -->
+    <Button
+        android:id="@+id/btnAnnuaire"
+        android:layout_width="185dp"
+        android:layout_height="185dp"
+        android:layout_below="@id/btnAcceuil"
+        android:layout_marginTop="50dp"
+        android:text="RENDEZ-VOUS"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/address_book_icon"
+        android:textColor="@color/colorPrimaryDark" />
+
+</RelativeLayout>
