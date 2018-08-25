@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvtitre1"
+        android:layout_width="337dp"
+        android:layout_height="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FF9884"
+        android:layout_marginTop="55dp"
+        android:text="A propos de SMARS NOTARY" />
+
+    <TextView
+        android:id="@+id/tvNotreApplication"
+        android:layout_width="326dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvtitre1"
+        android:layout_centerHorizontal="true"
+        android:text="Après avoir fait une mise en contexte de la situation fonciere en Haiti, Retrouver un notaire est une vraie casse tete par rapport a leur manque visibilité." />
+
+    <TextView
+        android:id="@+id/tvtitre2"
+        android:layout_width="325dp"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="179dp"
+        android:text="Smars Notary  est une application qui a pour objectif d'aider à trouver et à rester en contact avec les notaires haitiens n'importe ou n'importe quand selon leur circonscription.Smars notary est simple, gratuit, securisé et fiable" />
+
+    <TextView
+        android:id="@+id/tvtitre3"
+        android:layout_width="325dp"
+        android:layout_height="96dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="188dp"
+        android:text="SMARS NOTARY  a été concu, developpé et réalisé par un groupe de trois codeurs representer par :
+" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tvtitre1"
+        android:layout_marginBottom="124dp"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvtitre1"
+        android:layout_alignTop="@+id/imageView4"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+</RelativeLayout>
