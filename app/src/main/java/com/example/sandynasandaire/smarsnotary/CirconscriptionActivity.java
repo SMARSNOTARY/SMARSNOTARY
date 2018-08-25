@@ -1,8 +1,11 @@
 package com.example.sandynasandaire.smarsnotary;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,11 +29,16 @@ public class CirconscriptionActivity extends AppCompatActivity {
     private ArrayList<Commune> Liste_commune;
     private CommuneAdapter communeadapter;
     GridView gvCommune;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circonscription);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("Liste commune");
 
         gvCommune = findViewById(R.id.gvCommune);
         gvCommune.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -42,12 +50,20 @@ public class CirconscriptionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        progressDialog = new ProgressDialog(CirconscriptionActivity.this);
+
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("connexion en cours...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         get_commune();
     }
 
     private void get_commune() {
         Liste_commune = new ArrayList<>();
-        communeadapter = new CommuneAdapter(getApplicationContext(),Liste_commune );
+        Resources res= getResources();
+        communeadapter = new CommuneAdapter(getApplicationContext(), R.layout.item_commune, Liste_commune, res);
         gvCommune.setAdapter(communeadapter);
 
         String apiLink= "https://simenonline.com/SMARSNOTARY/commune/commune.php?dept=1";

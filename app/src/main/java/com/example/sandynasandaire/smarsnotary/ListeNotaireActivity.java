@@ -41,7 +41,7 @@ public class ListeNotaireActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Notaire objNotaire = (Notaire) gvNotaire.getItemAtPosition(i);
-                Intent intent = new Intent(getApplicationContext(), ListeNotaireActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProfilActivity.class);
                 intent.putExtra("selected_notaire", objNotaire);
                 startActivity(intent);
             }

@@ -20,6 +20,14 @@ public class Commune implements Serializable {
     private String desc_Commune;
     private String deptID;
 
+    public Commune(String key, String id_commune, String desc_department, String desc_Commune, String deptID) {
+        this.key = key;
+        this.id_commune = id_commune;
+        this.desc_department = desc_department;
+        this.desc_Commune = desc_Commune;
+        this.deptID = deptID;
+    }
+
     public String getKey() {
         return key;
     }
