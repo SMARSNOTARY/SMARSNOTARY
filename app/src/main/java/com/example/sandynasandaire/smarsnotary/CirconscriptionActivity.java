@@ -13,6 +13,7 @@ import android.widget.GridView;
 
 import com.example.sandynasandaire.smarsnotary.adapter.CommuneAdapter;
 import com.example.sandynasandaire.smarsnotary.model.Commune;
+import com.example.sandynasandaire.smarsnotary.model.Departement;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -30,7 +31,7 @@ public class CirconscriptionActivity extends AppCompatActivity {
     private CommuneAdapter communeadapter;
     GridView gvCommune;
     ProgressDialog progressDialog;
-
+    Departement objDept;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,10 @@ public class CirconscriptionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("Liste commune");
+
+        //get extra from intent
+        objDept = (Departement) getIntent().getSerializableExtra("selected_departement");
+
 
         gvCommune = findViewById(R.id.gvCommune);
         gvCommune.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,7 +71,8 @@ public class CirconscriptionActivity extends AppCompatActivity {
         communeadapter = new CommuneAdapter(getApplicationContext(), R.layout.item_commune, Liste_commune, res);
         gvCommune.setAdapter(communeadapter);
 
-        String apiLink= "https://simenonline.com/SMARSNOTARY/commune/commune.php?dept=1";
+
+        String apiLink= "https://simenonline.com/SMARSNOTARY/commune/commune.php?dept="+objDept.getId_departement();
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
         client.get(apiLink, new JsonHttpResponseHandler(){
 
@@ -77,16 +83,24 @@ public class CirconscriptionActivity extends AppCompatActivity {
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
-                    communeadapter.addAll(Commune.fromJSONArray(json.getJSONArray("response")));
-                    Log.d("DEBUG APP: ", Liste_commune.toString());
-                } catch (JSONException e) {
+                    if(array.getJSONObject(0).getString("key").equals("SUCCESS")){
+                        communeadapter.addAll(Commune.fromJSONArray(json.getJSONArray("response")));
+                        progressDialog.dismiss();
+                        Log.d("DEBUG APP: ", Liste_commune.toString());
+                    }else{
+                        progressDialog.dismiss();
+                }
+
+            } catch (JSONException e) {
                     e.printStackTrace();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
             }
         });
     }
