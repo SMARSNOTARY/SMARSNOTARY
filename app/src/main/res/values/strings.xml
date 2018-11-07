@@ -38,4 +38,29 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_profil">ProfilActivity</string>
     <string name="title_activity_main_notaire">MainNotaireActivity</string>
+    <string name="les_professions_judiciaires">Les professions judiciaires du second cercle pratiquées en Haiti sont les professions de notaires et d\'arpenteurs</string>
+    <string name="title_professions_judiciaires">LES PROFESSIONS JUDICIAIRES</string>
+    <string name="titles_les_notaires">LES NOTAIRES</string>
+    <string name="le_notariat">Le notariat a été longtemps régi par la loi du 24 février 1919. Il l’est aujourd’hui par le décret du 27 novembre 1969.</string>
+    <string name="titles_les_attributions">Les attributions et les répartitions des notaires.</string>
+    <string name="mot_de_passe">\t\t Mot de passe :</string>
+    <string name="t_l_phone">\t\t Téléphone :</string>
+    <string name="se_connecter">Se Connecter</string>
+    <string name="mot_de_passe_oubli"><u>Mot de passe Oublié</u></string>
+    <string name="cr_er_compte">Créer Compte</string>
+    <string name="propos">À Propos</string>
+    <string name="first_name">\t Prénom :</string>
+    <string name="last_name">\t Nom :</string>
+    <string name="nif">\t Nif :</string>
+    <string name="adresse_cabinet">\t Adresse Cabinet :</string>
+    <string name="date_commission_yyyy_mm_dd">\t Date commission :</string>
+    <string name="email">\t Email :</string>
+    <string name="confirmer_mot_de_passe">\t Confirmer mot de passe :</string>
+    <string name="mot_de_passe_r">\t Mot de passe :</string>
+    <string name="t_l_phone_r">\t Téléphone :</string>
+    <string name="register">\t\t\t Register \t\t\t</string>
+    <string name="date_de_naissance_yyyy_mm_dd">\tDate de Naissance :</string>
+    <string name="application_develo">Application developpe apres un Bootcamp organisé par Transition Digital / Codepath en Haïti à l\'institution Saint Louis de Gonzague. SmarsNotary avant, et dans le but de faire veleur de la langue Créole nous avons décider de changer à <u>Notè Peyim</u><br />
+        L\' à pour objectif d\'apporter une meilleure visibilité au notaire du pays et aidé la population à mieux comprendre le système notarier.
+    </string>
 </resources>

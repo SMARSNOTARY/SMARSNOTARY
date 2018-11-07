@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 
 /**
@@ -64,7 +66,26 @@ public class localisationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_localisation, container, false);
+        View view = inflater.inflate(R.layout.fragment_localisation, container, false);
+        WebView myWebView = view.findViewById(R.id.webview);
+        // Configure related browser settings
+        myWebView.getSettings().setLoadsImagesAutomatically(true);
+        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        // Enable responsive layout
+        myWebView.getSettings().setUseWideViewPort(true);
+        // Zoom out if the content width is greater than the width of the viewport
+        myWebView.getSettings().setLoadWithOverviewMode(true);
+        myWebView.getSettings().setSupportZoom(true);
+        myWebView.getSettings().setBuiltInZoomControls(true); // allow pinch to zooom
+        myWebView.getSettings().setDisplayZoomControls(false); // disable the default zoom controls on the page
+        // Configure the client to use when opening URLs
+        myWebView.setWebViewClient(new WebViewClient());
+        // Load the initial URL
+        //myWebView.loadUrl("https://www.google.com/maps/?q=-15.623037,18.388672");
+        //myWebView.loadUrl("https://www.google.com/maps/@-15.394108,17.9629518,9z");
+        myWebView.loadUrl("https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393");
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

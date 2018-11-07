@@ -12,6 +12,9 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.example.sandynasandaire.smarsnotary.RegisterNotary;
 
 public class GPSTracker extends Service implements LocationListener {
 
@@ -159,7 +162,12 @@ public class GPSTracker extends Service implements LocationListener {
      * */
 
     public void showSettingsAlert(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
+
+        Toast.makeText(mContext, "Activate your GPS", Toast.LENGTH_SHORT).show();
+       Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+       mContext.startActivity(intent);
+
+       /* AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 
         // Setting Dialog Title
         alertDialog.setTitle("GPS is settings");
@@ -183,7 +191,9 @@ public class GPSTracker extends Service implements LocationListener {
         });
 
         // Showing Alert Message
-        alertDialog.show();
+        alertDialog.show();*/
+
+
     }
 
     @Override
