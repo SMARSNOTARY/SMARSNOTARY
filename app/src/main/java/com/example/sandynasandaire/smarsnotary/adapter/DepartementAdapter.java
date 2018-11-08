@@ -5,17 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.sandynasandaire.smarsnotary.R;
-import com.example.sandynasandaire.smarsnotary.model.Commune;
 import com.example.sandynasandaire.smarsnotary.model.Departement;
-import com.example.sandynasandaire.smarsnotary.model.Notaire;
 
 import java.util.ArrayList;
+
+import static com.example.sandynasandaire.smarsnotary.utils.settings.IMAGE_LINK;
 
 /**
  * Created by Sandyna Sandaire on 20/08/2018.
@@ -32,7 +32,7 @@ public class DepartementAdapter extends ArrayAdapter<Departement> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // get the Showbiz
-        final Departement Departement = getItem(position);
+        final Departement departement = getItem(position);
 
         // find or inflate the template
         if (convertView == null) {
@@ -41,13 +41,21 @@ public class DepartementAdapter extends ArrayAdapter<Departement> {
         }
 
         TextView tvDepartement = convertView.findViewById(R.id.tvNomDepartement);
-        tvDepartement.setText(Departement.getDesc_departement());
+        tvDepartement.setText(departement.getDesc_departement());
 
-        /*ImageView ivDepartement_commune = convertView.findViewById(R.id.ivDepartement_commune);
+        System.out.println("LINK IMG :>" +IMAGE_LINK+departement.getImg_dept());
+        ImageView ivDepartement_commune = convertView.findViewById(R.id.ivDepartement);
+
         Glide.with(getContext())
-                .load("https://cdn.pixabay.com/photo/2017/02/23/13/05/profile-2092113_960_720.png")
-                .into(ivDepartement_commune);*/
+                .load(IMAGE_LINK+departement.getImg_dept())
+                .apply(new RequestOptions()
+                        .fitCenter()
+                        .placeholder(R.drawable.backimage)
+                        .error(R.drawable.backimage)
+                )
+                .into(ivDepartement_commune);
 
+        ivDepartement_commune.setScaleType(ImageView.ScaleType.FIT_XY);
         return convertView;
     }
 }

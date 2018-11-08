@@ -1,14 +1,21 @@
 package com.example.sandynasandaire.smarsnotary;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -21,10 +28,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 import cz.msebera.android.httpclient.Header;
 
 public class RegisterClient extends AppCompatActivity {
-    private EditText firstnameclients,lastnameclients,emailclients, passwordclients, confirmpassclients,telclients, datedenaissance;
+    private EditText firstnameclients;
+    private EditText lastnameclients;
+    private EditText emailclients;
+    private EditText passwordclients;
+    private EditText confirmpassclients;
+    private EditText telclients;
+    private static EditText datedenaissance;
     private Button btnregisterclients;
     private ProgressBar loading;
     ProgressDialog progressDialog;
@@ -34,6 +49,20 @@ public class RegisterClient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_client);
+
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
+        // Display icon in the toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         loading=(ProgressBar)findViewById(R.id.loading);
         firstnameclients=(EditText)findViewById(R.id.idfirstnameclients);
@@ -45,6 +74,16 @@ public class RegisterClient extends AppCompatActivity {
         telclients=(EditText)findViewById(R.id.etTelephone);
         datedenaissance=(EditText)findViewById(R.id.etDtNaissance);
         progressDialog =new ProgressDialog(RegisterClient.this);
+
+        datedenaissance.setInputType(InputType.TYPE_NULL);
+        datedenaissance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialogfragment = new DatePickerDialogTheme1();
+
+                dialogfragment.show(getFragmentManager(), "Theme 1");
+            }
+        });
 
         btnregisterclients.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +163,46 @@ public class RegisterClient extends AppCompatActivity {
                 Toast.makeText(RegisterClient.this,"Erreur de connexion....!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public static class DatePickerDialogTheme1 extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            final Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datepickerdialog = new DatePickerDialog(getActivity(),
+                    AlertDialog.THEME_DEVICE_DEFAULT_DARK,this,year,month,day);
+
+            return datepickerdialog;
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day){
+
+            datedenaissance.setText(year+"-"+ (month+1)+"-"+day);
+
+        }
     }
 
 }

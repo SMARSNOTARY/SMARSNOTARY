@@ -10,9 +10,11 @@
 
     <ImageView
         android:id="@+id/Ivsplash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/logonotaire2"/>
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:layout_centerInParent="true"
+        android:fitsSystemWindows="true"
+        android:src="@drawable/logonotaire2" />
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
