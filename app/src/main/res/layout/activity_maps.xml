@@ -5,7 +5,7 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sandynasandaire.smarsnotary.MapsActivity" >
+    tools:context="com.smarsnotary.notepeyim.smarsnotary.MapsActivity" >
 
     <ProgressBar
         android:id="@+id/progressBar"

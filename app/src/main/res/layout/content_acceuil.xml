@@ -5,12 +5,19 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.example.sandynasandaire.smarsnotary.AcceuilActivity"
+tools:context="com.smarsnotary.notepeyim.smarsnotary.AcceuilActivity"
 android:orientation="vertical"
 android:padding="10dp"
-android:background="@color/colorAccent"
+android:background="@color/primaryTextColor"
 android:gravity="center"
 android:id="@+id/ll">
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/logo_new"
+        android:padding="10dp"/>
+
 <LinearLayout
     android:clipToPadding="false"
     android:gravity="center"
@@ -24,6 +31,7 @@ android:id="@+id/ll">
         android:layout_width="160dp"
         android:layout_height="190dp"
         android:layout_margin="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -1,59 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8f0714"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.sandynasandaire.smarsnotary.MainNotaireActivity"
-    tools:showIn="@layout/app_bar_main_notaire">
+    tools:context="com.smarsnotary.notepeyim.smarsnotary.MainNotaireActivity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/primaryTextColor"
+    android:gravity="center"
+    android:id="@+id/ll">
 
-    <Button
+<ImageView
+    android:layout_width="75dp"
+    android:layout_height="75dp"
+    app:srcCompat="@drawable/logo_new"
+    android:padding="10dp"/>
+
+<LinearLayout
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
         android:id="@+id/btnAcceuil"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/home"
-        android:text="NOTAIRE"
-        android:textColor="#fff" />
+        android:layout_width="160dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:srcCompat="@drawable/ic_directory"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="Annuaire des Notaires"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Voir les notaires enregistrer sur notre système"
+                android:padding="5dp"
+                android:textColor="@android:color/darker_gray"/>
 
-    <Button
-        android:id="@+id/btnApropos"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/btnGps"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/apropos"
-        android:text="PROFIL"
-        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
-        android:textColor="#000" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:id="@+id/btnProfil"
+        android:layout_width="160dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/ic_lawyer"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="Profil"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Profil complet du notaire"
+                android:padding="5dp"
+                android:textColor="@android:color/darker_gray"/>
 
-    <Button
-        android:id="@+id/btnGps"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
-        android:layout_alignBottom="@+id/btnAcceuil"
-        android:layout_toEndOf="@+id/btnAnnuaire"
-        android:background="@drawable/placeholder"
-        android:text="MESSAGE"
-        android:textColor="#fff" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    <!-- -->
-    <Button
-        android:id="@+id/btnAnnuaire"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
-        android:layout_below="@id/btnAcceuil"
-        android:layout_marginTop="50dp"
-        android:text="RENDEZ-VOUS"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/address_book_icon"
-        android:textColor="@color/colorPrimaryDark" />
+</LinearLayout>
+<LinearLayout
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:id="@+id/btnRendezvous"
+        android:layout_width="160dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/ic_calendar"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="Rendez-vous"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Voir tous les rendez-vous enregistrer"
+                android:padding="5dp"
+                android:textColor="@android:color/darker_gray"/>
 
-</RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:id="@+id/btnMessage"
+        android:layout_width="160dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/ic_newspaper"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Message"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Tous vos messages"
+                android:textColor="@android:color/darker_gray" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+
+</LinearLayout>
