@@ -1,26 +1,46 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'smarsnotary'
+            keyPassword 'smarsnotary'
+            storeFile file('/Users/ingdjason/Documents/AndroidProject/SMARSNOTARY/smarskey')
+            storePassword 'smarsnotary'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.sandynasandaire.smarsnotary"
+        applicationId 'com.notepeyim.smarsnotary'
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "2.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
+    }
+    lintOptions {
+
+        checkReleaseBuilds false
+
+    }
+
+
+    buildToolsVersion '27.0.3'
+    productFlavors {
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
@@ -36,5 +56,4 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     implementation 'com.loopj.android:android-async-http:1.4.9'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
-
 }

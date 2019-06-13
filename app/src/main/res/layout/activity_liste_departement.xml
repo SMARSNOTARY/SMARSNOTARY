@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context="com.example.sandynasandaire.smarsnotary.ListeDepartementActivity"
+    tools:context="com.smarsnotary.notepeyim.smarsnotary.ListeDepartementActivity"
     android:background="@color/colorAccent">
 
     <!-- Load the toolbar here -->

@@ -16,11 +16,13 @@
         android:id="@+id/Ivsplash"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:src="@drawable/logo_new"
+        android:background="@color/primaryTextColor"
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:foregroundGravity="center"
-        android:src="@drawable/logonotaire2" />
+        android:foregroundGravity="center" />
 
     <ScrollView
         android:layout_below="@+id/Ivsplash"

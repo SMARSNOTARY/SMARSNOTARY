@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnDate"
+                    android:drawableRight="@drawable/ic_calendar"
+                    android:textColor="@android:color/black"
+                    android:text="@string/choisir_date_et_heure_de_r_union"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvDate"
+                    android:gravity="center"
+                    android:text="..."
+                    android:textColor="@android:color/black"/>
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/spTime"
+                    android:padding="10dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:entries="@array/timeList">
+
+                </android.support.v7.widget.AppCompatSpinner>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/AppTheme"
+                    android:layout_margin="10dp"
+                    app:counterMaxLength="100"
+                    app:counterEnabled="true"
+                    android:hint="Subject du rendez-vous :"
+                    android:textColorHint="@android:color/black">
+
+                    <EditText
+                        android:id="@+id/edtSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:textColor="@android:color/black"
+                        android:focusable="true"
+                        android:maxLength="100"
+                        android:gravity="start"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@android:color/black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:theme="@style/AppTheme"
+                    android:layout_margin="10dp"
+                    app:counterMaxLength="300"
+                    app:counterEnabled="true"
+                    android:hint="Motif de rendez-vous :"
+                    android:textColorHint="@android:color/black">
+
+                    <EditText
+                        android:id="@+id/edtDescMotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:ems="10"
+                        android:lines="5"
+                        android:gravity="start"
+                        android:maxLength="300"
+                        android:textColor="@android:color/black"
+                        android:focusable="true"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@android:color/black" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCancel"
+                android:layout_weight="2"
+                android:layout_margin="5dp"
+                android:textColor="@color/primaryTextColor"
+                android:background="@color/secondaryDarkColor"
+                android:shadowColor="@color/colorPrimary"
+                android:text="Annulé"/>
+
+            <Button
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/btnSave"
+                android:textColor="@color/primaryTextColor"
+                android:background="@color/secondaryDarkColor"
+                android:shadowColor="@color/colorPrimary"
+                android:text="Enregistrer"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

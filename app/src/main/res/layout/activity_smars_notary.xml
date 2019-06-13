@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8f0714"
-    tools:context="com.example.sandynasandaire.smarsnotary.SmarsNotaryActivity">
+    tools:context="com.smarsnotary.notepeyim.smarsnotary.SmarsNotaryActivity">
 
 
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_height="180dp"
         android:layout_alignTop="@+id/login_progress"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logonotaire2" />
+        android:src="@drawable/logo_new" />
 
 
     <TextView
