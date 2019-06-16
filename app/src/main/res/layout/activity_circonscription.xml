@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="@color/colorAccent"
+    android:background="#fff"
     tools:context="com.smarsnotary.notepeyim.smarsnotary.CirconscriptionActivity">
 
     <!-- Load the toolbar here -->

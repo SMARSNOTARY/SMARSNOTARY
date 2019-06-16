@@ -13,25 +13,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimary"
-                android:layout_margin="10dp"/>
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvNomCommune"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
                 android:text="Port-Au-Prince"
+                android:id="@+id/tvNomCommune"
+                android:background="@drawable/text_style"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:textSize="20dp"
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:padding="5dp"
-                android:textColor="@android:color/darker_gray"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimary"
-                android:layout_margin="10dp"/>
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

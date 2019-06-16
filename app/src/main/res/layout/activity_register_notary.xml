@@ -2,227 +2,217 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="#8f0714">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff">
 
     <!-- Load the toolbar here -->
     <include
         layout="@layout/toolbar_main"
+        android:id="@+id/in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
-    <ImageView
-        android:layout_margin="5dp"
-        android:id="@+id/Ivsplash"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/logo_new"
-        android:background="@color/primaryTextColor"
-        android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:foregroundGravity="center" />
-
-    <ScrollView
-        android:layout_below="@+id/Ivsplash"
+    <TextView
+        android:layout_below="@+id/in"
+        android:id="@+id/login_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:scrollbars="vertical">
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:text="@string/register_note_account_title"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
+    <ScrollView
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_title"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/red_border_background"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingTop="10dp">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextLabel"
-                android:textColorHint="@android:color/white">
+                android:focusable="true"
+                android:layout_height="wrap_content">
 
                 <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:drawableLeft="@drawable/ic_avatar"
+                    android:drawableTint="#7f0000"
+                    android:nextFocusDown="@id/idlastnamenotaire"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
                     android:id="@+id/idfirstnamenotaire"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
-                    android:drawableLeft="@drawable/ic_avatar"
                     android:hint="@string/first_name"
-                    android:inputType="textPersonName"
-                    android:textColorHint="@android:color/white" />
-
-
+                    android:inputType="textPersonName"/>
             </android.support.design.widget.TextInputLayout>
 
-
             <android.support.design.widget.TextInputLayout
-                android:theme="@style/TextLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/white">
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/idlastnamenotaire"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
                     android:drawableLeft="@drawable/ic_avatar"
+                    android:drawableTint="#7f0000"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/idlastnamenotaire"
+                    android:nextFocusDown="@id/idnifnotaire"
                     android:hint="@string/last_name"
-                    android:inputType="textPersonName"
-                    android:textColorHint="@android:color/white" />
-
-
+                    android:inputType="textPersonName"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:theme="@style/TextLabel"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/white">
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/idnifnotaire"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:digits="1234567890-"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
                     android:drawableLeft="@drawable/ic_id_card"
+                    android:drawableTint="#7f0000"
+                    android:singleLine="true"
+                    android:digits="1234567890-"
                     android:hint="@string/nif"
+                    android:textColor="@android:color/black"
                     android:inputType="textPersonName"
-                    android:textColorHint="@android:color/white" />
+                    android:nextFocusDown="@id/idadressnotaire"
+                    android:id="@+id/idnifnotaire"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:theme="@style/TextLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/white">
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/idadressnotaire"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
-                    android:hint="@string/adresse_cabinet"
                     android:drawableLeft="@drawable/ic_address_w"
+                    android:drawableTint="#7f0000"
+                    android:singleLine="true"
+                    android:hint="@string/adresse_cabinet"
+                    android:textColor="@android:color/black"
                     android:inputType="textPersonName"
-                    android:textColorHint="@android:color/white" />
+                    android:id="@+id/idadressnotaire"
+                    android:nextFocusDown="@id/iddatecommission"/>
             </android.support.design.widget.TextInputLayout>
 
             <Spinner
                 android:id="@+id/spCommune"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp" />
-
+                android:layout_centerHorizontal="true"/>
 
             <android.support.design.widget.TextInputLayout
-                android:theme="@style/TextLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/white">
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/iddatecommission"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:digits="1234567890-"
-                    android:ems="10"
-                    android:textIsSelectable="true"
                     android:drawableLeft="@drawable/ic_calendar_w"
+                    android:drawableTint="#7f0000"
+                    android:singleLine="true"
+                    android:digits="1234567890-"
                     android:hint="@string/date_commission_yyyy_mm_dd"
+                    android:textColor="@android:color/black"
                     android:inputType="date"
-                    android:maxLength="10"
-                    android:textColor="@color/primaryTextColor"
-                    android:textColorHint="@android:color/white" />
-
+                    android:id="@+id/iddatecommission"
+                    android:nextFocusDown="@id/idemail"/>
             </android.support.design.widget.TextInputLayout>
 
+
             <android.support.design.widget.TextInputLayout
-                android:theme="@style/TextLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/white">
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/idemail"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
-                    android:hint="@string/email"
                     android:drawableLeft="@drawable/ic_mail"
+                    android:drawableTint="#7f0000"
+                    android:singleLine="true"
+                    android:hint="@string/email"
+                    android:textColor="@android:color/black"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="@android:color/white" />
-
+                    android:id="@+id/idemail"
+                    android:nextFocusDown="@id/idtelephone"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextLabel"
-                android:textColorHint="@android:color/white">
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/idtelephone"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:digits="1234567890+"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
                     android:drawableLeft="@drawable/ic_phone_call"
+                    android:drawableTint="#7f0000"
+                    android:digits="1234567890+"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
                     android:hint="@string/t_l_phone_r"
                     android:inputType="text"
-                    android:textColorHint="@android:color/white" />
-
+                    android:nextFocusDown="@id/idpassword"
+                    android:id="@+id/idtelephone"/>
             </android.support.design.widget.TextInputLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/TextLabel"
-                android:textColorHint="@android:color/white">
+                app:passwordToggleEnabled="true"
+                android:layout_height="wrap_content">
 
                 <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:singleLine="true"
                     android:id="@+id/idpassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
+                    android:textColor="@android:color/black"
                     android:drawableLeft="@drawable/ic_lock"
+                    android:drawableTint="#7f0000"
+                    android:nextFocusDown="@id/idconfirmpassword"
                     android:hint="@string/mot_de_passe_r"
-                    android:inputType="textPassword"
-                    android:textColorHint="@android:color/white" />
-
+                    android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:theme="@style/TextLabel"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/white">
+                app:passwordToggleEnabled="true"
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/idconfirmpassword"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textColor="@color/primaryTextColor"
+                    android:layout_marginTop="16dp"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/idconfirmpassword"
                     android:drawableLeft="@drawable/ic_lock"
+                    android:drawableTint="#7f0000"
                     android:hint="@string/confirmer_mot_de_passe"
-                    android:inputType="textPassword"
-                    android:textColorHint="@android:color/white" />
-
+                    android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
 
             <ProgressBar
@@ -234,19 +224,17 @@
             </ProgressBar>
 
             <Button
-                android:id="@+id/idbtnRegisternotaire"
-                android:layout_width="wrap_content"
-                android:padding="10dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:background="@drawable/shape_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="22dp"
+                android:background="#7f0000"
                 android:text="@string/register"
-                android:textColor="@color/colorPrimaryDark" />
-
+                android:id="@+id/idbtnRegisternotaire"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
 
         </LinearLayout>
-
     </ScrollView>
-
 
 </RelativeLayout>

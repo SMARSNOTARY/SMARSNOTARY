@@ -48,7 +48,7 @@
     <string name="se_connecter">Se Connecter</string>
     <string name="mot_de_passe_oubli"><u>Mot de passe Oublié</u></string>
     <string name="cr_er_compte">Créer Compte</string>
-    <string name="propos">À Propos</string>
+    <string name="propos"><u>À Propos</u></string>
     <string name="first_name">\t Prénom :</string>
     <string name="last_name">\t Nom :</string>
     <string name="nif">\t Nif :</string>
@@ -58,7 +58,7 @@
     <string name="confirmer_mot_de_passe">\t Confirmer mot de passe :</string>
     <string name="mot_de_passe_r">\t Mot de passe :</string>
     <string name="t_l_phone_r">\t Téléphone :</string>
-    <string name="register">\t\t\t Register \t\t\t</string>
+    <string name="register">\t\t\t Enregistrer \t\t\t</string>
     <string name="date_de_naissance_yyyy_mm_dd">\tDate de Naissance :</string>
     <string name="application_develo">Application developpe apres un Bootcamp organisé par Transition Digital / Codepath en Haïti à l\'institution Saint Louis de Gonzague. SmarsNotary avant, et dans le but de faire veleur de la langue Créole nous avons décider de changer à <u>Notè Peyim</u><br />
         L\' à pour objectif d\'apporter une meilleure visibilité au notaire du pays et aidé la population à mieux comprendre le système notarier.
@@ -93,6 +93,10 @@ Si vous avez l\'intention d\'acheter une propriété (un terrain ou un immeuble)
 
 Si l'immeuble n'est pas encore évalué par un inspecteur de la commune où il se situe, il faut le faire au moment opportun avant de conclure le contrat d'achat devant un notaire public compétent. Lors de l'acquisition, il est urgent d'établir sa valeur pour le paiement de l'impôt foncier tout en procédant à son enregistrement dans les registres alloués à cet effet. Dans le cas d'un bien meuble, par exemple une automobile, il est prudent de vérifier son véritable propriétaire par l'intermédiaire du bureau de la circulation des véhicules. Il en est de même pour le numéro de série, la couleur, le modèle, la marque et l'année de l'automobile. Il est aussi prudent de faire vérifier le véhicule par un mécanicien compétent. Ce sont des petits conseils utiles qui peuvent aident des gens à comprendre le fonctionnement du système juridique haïtien dans la pratique. Le juriste haïtien se donne pour mandat d'élaborer davantage sur des sujets qui intéressent la vie quotidienne lors de sa prochaine mise à jour. Les adresses des sites ci-dessous fournissent des renseignements pertinents qui peuvent être adoptés et appliqués en Haïti. Il est conseillé d'y jeter un coup d'oeil juste pour se faire une idée.
     </string>
+    <string name="connexion_au_compte">Connexion au compte</string>
+    <string name="register_note_account_title">-Enregistrer- \n Créé un compte Noté</string>
+    <string name="register_client_account_title">-Enregistrer- \n Créé un compte utilisateur simple</string>
+    <string name="slogan_notaire">●\n Les écrits restent. Ceux des <u>Notaires</u> vous protègent.\n●</string>
     <string-array name="timeList">
         <item>08:00</item>
         <item>08:30</item>
