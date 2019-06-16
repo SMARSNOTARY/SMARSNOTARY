@@ -89,10 +89,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(com.smarsnotary.notepeyim.smarsnotary.R.layout.activity_login);
 
+        // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        toolbar.setTitle("NotèPeyim");
         setSupportActionBar(toolbar);
-//        toolbar.setTitle("Connexion");
-//        getSupportActionBar().setTitle("Connexion");
 
         // Set up the login form.
         //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -130,10 +132,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-
-        //mLoginFormView = findViewById(R.id.login_form);
-        // mProgressView = findViewById(R.id.login_progress);
-
         singup = (TextView)findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.signup);
 
         singup.setOnClickListener(new OnClickListener() {
@@ -142,6 +140,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 showDialog(Alt);
             }
         });
+
     }
 
     private void login_user(String email, String password) {
@@ -216,7 +215,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         {
             case Alt:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Sign Up");
+                builder.setMessage("Créer un compte");
                 builder.setCancelable(true);
                 builder.setPositiveButton("Notaire", new NotOnCliCk());
                 builder.setNegativeButton("Client", new CliOnCliCk());
@@ -249,14 +248,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Intent i=new Intent(this,SmarsNotaryActivity.class);
         startActivity(i);
     }
-
-
-
-
-
-
-
-
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -292,7 +283,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         }
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -423,6 +413,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
+    }
+
+    public void onAbout(View view){
+        Toast.makeText(getApplicationContext(), "Pour bientôt...", Toast.LENGTH_SHORT).show();
     }
 
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {

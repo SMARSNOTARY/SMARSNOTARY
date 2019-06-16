@@ -8,12 +8,13 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.test.mock.MockPackageManager;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,12 +29,12 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.smarsnotary.notepeyim.smarsnotary.adapter.CommuneAdapter;
-import com.smarsnotary.notepeyim.smarsnotary.model.Commune;
-import com.smarsnotary.notepeyim.smarsnotary.utils.GPSTracker;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.smarsnotary.notepeyim.smarsnotary.adapter.CommuneAdapter;
+import com.smarsnotary.notepeyim.smarsnotary.model.Commune;
+import com.smarsnotary.notepeyim.smarsnotary.utils.GPSTracker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -86,6 +87,7 @@ public class RegisterNotary extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.toolbar);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
+        toolbar.setTitle("NotèPeyim");
         setSupportActionBar(toolbar);
         // Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -121,19 +123,22 @@ public class RegisterNotary extends AppCompatActivity{
         });
 
 
-        try {
+        /*try {
             if (ActivityCompat.checkSelfPermission(getApplicationContext(), mPermission)
                     != MockPackageManager.PERMISSION_GRANTED) {
 
                 ActivityCompat.requestPermissions((Activity) getApplicationContext(), new String[]{mPermission},
                         REQUEST_CODE_PERMISSION);
+
             }
         } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
-        }
+        }*/
+
+        grantedAccessFineLocation();
 
         loadDevise();
-
 
 
         btnregisternotaire.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +179,54 @@ public class RegisterNotary extends AppCompatActivity{
             }
         });
 
+    }
+
+    private void grantedAccessFineLocation() {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                mPermission)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(RegisterNotary.this,
+                    mPermission)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(RegisterNotary.this,
+                        new String[]{mPermission},
+                        REQUEST_CODE_PERMISSION);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    grantedAccessFineLocation();
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
     }
 
     // Menu icons are inflated just as they were with actionbar

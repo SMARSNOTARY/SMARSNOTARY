@@ -56,6 +56,7 @@ public class RegisterClient extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.toolbar);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
+        toolbar.setTitle("NotèPeyim");
         setSupportActionBar(toolbar);
         // Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);

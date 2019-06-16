@@ -203,10 +203,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBodyText = "Partager l'application sur tous les réseaux sociaux SMARSNOTARY/NOTĖPEYIM....";
+        String shareBodyText = "Merci de partager le lien de téléchargement de l'application sur tous les réseaux sociaux https://play.google.com/store/apps/details?id=com.notepeyim.smarsnotary et visiter notre site web http://notepeyim.esy.es";
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Partager SMARSNOTARY/NOTĖPEYIM");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
-        startActivity(Intent.createChooser(sharingIntent, "Partager : "));
+        startActivity(Intent.createChooser(sharingIntent, "Option de partage : "));
     }
 
 
