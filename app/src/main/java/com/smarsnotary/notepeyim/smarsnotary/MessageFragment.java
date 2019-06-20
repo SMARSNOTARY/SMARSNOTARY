@@ -67,7 +67,6 @@ public class MessageFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
     public static MessageFragment newInstance(Notaire notaire) {
         MessageFragment fragment = new MessageFragment();
