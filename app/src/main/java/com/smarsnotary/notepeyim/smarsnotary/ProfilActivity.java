@@ -35,7 +35,6 @@ public class ProfilActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -46,7 +45,7 @@ public class ProfilActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         objNotaire = (Notaire) getIntent().getSerializableExtra("selected_notaire");
-
+        getSupportActionBar().setTitle("Notaire "+objNotaire.getPrenom_notaire()+" "+objNotaire.getNom_notaie());
         open_fragment();
     }
 
@@ -92,12 +91,12 @@ public class ProfilActivity extends AppCompatActivity {
 
                 case com.smarsnotary.notepeyim.smarsnotary.R.id.navigation_dashboard:
 
-                    fragment = new MessageFragment();
+                    fragment = new MessageFragment().newInstance(objNotaire);
                     // mTextMessage.setText(R.string.title_dashboard);
                     break;
                 case com.smarsnotary.notepeyim.smarsnotary.R.id.navigation_notifications:
 
-                    fragment = new localisationFragment();
+                    fragment = new localisationFragment().newInstance(objNotaire);
                     //  mTextMessage.setText(R.string.title_notifications);
                     break;
             }

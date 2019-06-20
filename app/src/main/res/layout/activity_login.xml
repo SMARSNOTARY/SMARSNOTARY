@@ -144,8 +144,8 @@
         android:layout_below="@id/login_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:background="@drawable/user_profile_image_background"
         android:elevation="4dp"
-        android:src="@drawable/logo_note_peyim" />
+        android:src="@drawable/note_profil" />
 </RelativeLayout>

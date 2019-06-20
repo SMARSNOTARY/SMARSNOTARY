@@ -1,6 +1,8 @@
 package com.smarsnotary.notepeyim.smarsnotary;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
+
+import com.smarsnotary.notepeyim.smarsnotary.model.Notaire;
+import com.smarsnotary.notepeyim.smarsnotary.utils.GPSTracker;
 
 
 /**
@@ -25,6 +31,13 @@ public class localisationFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    ProgressDialog progressDialog;
+    Notaire selNotaire;
+    SharedPreferences sharedPreferences ;
+
+    // GPSTracker class
+    GPSTracker gps;
+    Double latitude, longitude;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -39,16 +52,14 @@ public class localisationFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param notaire Parameter 1.
      * @return A new instance of fragment localisationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static localisationFragment newInstance(String param1, String param2) {
+    public static localisationFragment newInstance(Notaire notaire) {
         localisationFragment fragment = new localisationFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable(ARG_PARAM1, notaire);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,8 +68,7 @@ public class localisationFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            Notaire mp = (Notaire) getArguments().getSerializable(ARG_PARAM1);
         }
     }
 
@@ -67,6 +77,18 @@ public class localisationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(com.smarsnotary.notepeyim.smarsnotary.R.layout.fragment_localisation, container, false);
+
+        selNotaire = (Notaire) getArguments().get(ARG_PARAM1);
+        sharedPreferences = getActivity().getSharedPreferences("LOGIN_USER_INFO", Context.MODE_PRIVATE);
+
+        progressDialog =new ProgressDialog(getActivity());
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Connexion en cours...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        latitude = 0.0;
+        longitude = 0.0;
+
         WebView myWebView = view.findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.webview);
         // Configure related browser settings
         myWebView.getSettings().setLoadsImagesAutomatically(true);
@@ -84,7 +106,14 @@ public class localisationFragment extends Fragment {
         // Load the initial URL
         //myWebView.loadUrl("https://www.google.com/maps/?q=-15.623037,18.388672");
         //myWebView.loadUrl("https://www.google.com/maps/@-15.394108,17.9629518,9z");
-        myWebView.loadUrl("https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393");
+        find_phone_position();
+        if(latitude!=0.0 && longitude != 0.0){
+            myWebView.loadUrl("https://www.google.com/maps/search/?api=1&query="+latitude+","+longitude+"");
+        }else{
+            myWebView.loadUrl("https://www.google.com/maps/search/?api=1&query=18.575980,-72.294660");
+        }
+
+
         return view;
     }
 
@@ -125,5 +154,28 @@ public class localisationFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void find_phone_position() {
+        // create class object
+        gps = new GPSTracker(getActivity());
+
+        // check if GPS enabled
+        if(gps.canGetLocation()){
+
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+
+            // \n is for new line
+            Toast.makeText(getActivity(), "Your Location is - \nLat: "
+                    + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        }else{
+            latitude = 0.0;
+            longitude = 0.0;
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+        }
     }
 }

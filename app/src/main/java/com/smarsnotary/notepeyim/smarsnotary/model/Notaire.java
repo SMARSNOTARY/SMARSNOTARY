@@ -31,12 +31,21 @@ public class Notaire implements Serializable {
     private String photo;
     private String created_user;
     private String updated_user;
+    private String rating;
 
     public String getKey() {
         return key;
     }
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public String getId_notaire() {
@@ -154,6 +163,7 @@ public class Notaire implements Serializable {
         this.photo = jsonObject.getString("photo");
         this.created_user = jsonObject.getString("created_user");
         this.updated_user = jsonObject.getString("updated_user");
+        this.rating = jsonObject.getString("rating");
 
     }
 
@@ -168,7 +178,5 @@ public class Notaire implements Serializable {
         }
         return Notaires;
     }
-
-
 }
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     tools:context="com.smarsnotary.notepeyim.smarsnotary.RendezVousActivity"
-    android:background="@color/colorAccent">
+    android:background="#fff">
 
     <!-- Load the toolbar here -->
     <include

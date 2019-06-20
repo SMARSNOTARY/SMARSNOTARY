@@ -1,5 +1,6 @@
 package com.smarsnotary.notepeyim.smarsnotary;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -30,18 +31,18 @@ import cz.msebera.android.httpclient.Header;
 import static com.smarsnotary.notepeyim.smarsnotary.utils.settings.API_LINK;
 
 public class ListeNotaireActivity extends AppCompatActivity {
-
+    /* http://www.mjsp.gouv.ht/organisation_liste_notaires.htm */
     private ArrayList<Notaire> Liste_notaire;
     private NotaireAdapter notaireadapter;
     GridView gvNotaire;
     Commune objCom;
+    ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.smarsnotary.notepeyim.smarsnotary.R.layout.activity_liste_notaire);
-
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.toolbar);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
@@ -51,7 +52,6 @@ public class ListeNotaireActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -67,6 +67,13 @@ public class ListeNotaireActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        progressDialog = new ProgressDialog(ListeNotaireActivity.this);
+
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("connexion en cours...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
         get_notaire();
 
@@ -74,6 +81,7 @@ public class ListeNotaireActivity extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                progressDialog.show();
                 get_notaire();
                 swipeRefresh.setRefreshing(false);
             }
@@ -120,17 +128,19 @@ public class ListeNotaireActivity extends AppCompatActivity {
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
-
+                    progressDialog.dismiss();
                     notaireadapter.addAll(Notaire.fromJSONArray(json.getJSONArray("response")));
                     Log.d("DEBUG APP: ", Liste_notaire.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
             }
         });
     }

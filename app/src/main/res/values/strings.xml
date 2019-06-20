@@ -121,4 +121,14 @@ Si l'immeuble n'est pas encore évalué par un inspecteur de la commune où il s
         <item>18:00</item>
         <item>18:30</item>
     </string-array>
+
+    <string name="status_prompt">Choisir status</string>
+
+    <string-array name="status_meeting">
+        <item>Choisir status</item>
+        <item>ACCEPTER</item>
+        <item>DECLINER</item>
+        <item>ATTENTE</item>
+        <item>NON-DISPONIBLE</item>
+    </string-array>
 </resources>

@@ -85,7 +85,7 @@ public class MainNotaireActivity extends AppCompatActivity
         });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.fab);
-        fab.setVisibility(View.GONE);
+        //fab.setVisibility(View.GONE);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

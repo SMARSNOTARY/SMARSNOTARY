@@ -1,5 +1,6 @@
 package com.smarsnotary.notepeyim.smarsnotary;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -33,7 +34,7 @@ public class ListeDepartementActivity extends AppCompatActivity {
     private ArrayList<Departement> Liste_departement;
     private DepartementAdapter departementadapter;
     GridView gvDepartement;
-
+    ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeRefresh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class ListeDepartementActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setTitle("Département");
+        getSupportActionBar().setTitle("Juridiction");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -64,12 +65,20 @@ public class ListeDepartementActivity extends AppCompatActivity {
             }
         });
 
+        progressDialog = new ProgressDialog(ListeDepartementActivity.this);
+
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Vérification des juridictions en cours...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         get_departement();
 
         swipeRefresh=(SwipeRefreshLayout) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.swipeRefresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                progressDialog.show();
                 get_departement();
                 swipeRefresh.setRefreshing(false);
             }
@@ -112,18 +121,20 @@ public class ListeDepartementActivity extends AppCompatActivity {
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
-
+                    progressDialog.dismiss();
                     departementadapter.addAll(Departement.fromJSONArray(json.getJSONArray("response")));
 
                     Log.d("DEBUG APP: ", Liste_departement.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
             }
         });
     }

@@ -8,13 +8,14 @@
     tools:context="com.smarsnotary.notepeyim.smarsnotary.DepartementCommuneActivity">
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:padding="10dp"
         android:id="@+id/img"
-        app:srcCompat="@drawable/logo_new" />
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/note_profil" />
 
     <GridView android:id="@+id/gvDepartementCommune"
         android:layout_width="wrap_content"

@@ -17,12 +17,13 @@ public class Meeting implements Serializable {
     private String idrendez_vous;
     private String clientUserID;
     private  String notaireUserID;
-
-
     private  String sujet_motif;
     private  String motif_description;
     private  String date_rendez_vous;
     private  String date_created;
+    private  String meeting_status;
+    private  String adresse_notairecabinet;
+    private  String nom_notairecomplet;
 
     public String getKey() {
         return key;
@@ -48,6 +49,30 @@ public class Meeting implements Serializable {
         return motif_description;
     }
 
+    public String getAdresse_notairecabinet() {
+        return adresse_notairecabinet;
+    }
+
+    public void setAdresse_notairecabinet(String adresse_notairecabinet) {
+        this.adresse_notairecabinet = adresse_notairecabinet;
+    }
+
+    public String getNom_notairecomplet() {
+        return nom_notairecomplet;
+    }
+
+    public void setNom_notairecomplet(String nom_notairecomplet) {
+        this.nom_notairecomplet = nom_notairecomplet;
+    }
+
+    public String getMeeting_status() {
+        return meeting_status;
+    }
+
+    public void setMeeting_status(String meeting_status) {
+        this.meeting_status = meeting_status;
+    }
+
     public String getDate_rendez_vous() {
         return date_rendez_vous;
     }
@@ -57,19 +82,17 @@ public class Meeting implements Serializable {
     }
 
     public Meeting(JSONObject jsonObject) throws JSONException {
-
-
         this.key = jsonObject.getString("key");
         this.clientUserID = jsonObject.getString("clientUserID");
         this.notaireUserID = jsonObject.getString("notaireUserID");
-
         this.sujet_motif = jsonObject.getString("sujet_motif");
-
         this.motif_description = jsonObject.getString("motif_description");
         this.date_rendez_vous = jsonObject.getString("date_rendez_vous");
         this.date_created = jsonObject.getString("date_created");
         this.idrendez_vous = jsonObject.getString("idrendez_vous");
-
+        this.meeting_status = jsonObject.getString("meeting_status");
+        this.adresse_notairecabinet = jsonObject.getString("adresse_notairecabinet");
+        this.nom_notairecomplet = jsonObject.getString("nom_notairecomplet");
     }
 
     public static ArrayList<Meeting> fromJSONArray(JSONArray array) {

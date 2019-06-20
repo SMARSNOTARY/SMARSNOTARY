@@ -138,7 +138,6 @@ public class ProfilFragment extends Fragment {
             }
         });
 
-
         if(sharedPreferences.getString("type_User", null).equals("CLIENT")){
             btnFollowNotaire.setVisibility(View.VISIBLE);
             rbRating.setVisibility(View.VISIBLE);
@@ -153,15 +152,18 @@ public class ProfilFragment extends Fragment {
         tvPhone.setText(selNotaire.getTelephone());
         tvAddress.setText(selNotaire.getAdresse_cabinet());
         tvCommision.setText(selNotaire.getDate_commision());
-        tvStarCount.setText("0.0");
+        if(selNotaire.getRating() != null){
+            tvStarCount.setText(selNotaire.getRating());
+        }else{
+            tvStarCount.setText("0/0");
+        }
+
         tvReviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
             }
         });
-
-
         
         return view;
     }
@@ -184,21 +186,20 @@ public class ProfilFragment extends Fragment {
 
         final AppCompatSpinner spTime=(AppCompatSpinner)layout.findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.spTime);
 
-
         dialog.setTitle( title )
                 .setIcon(android.R.drawable.ic_input_add)
-                .setMessage(message)
-                .setPositiveButton("Enregistrer", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialoginterface, int i) {
-                        if (!edtSubject.getText().toString().isEmpty() && !edtDescMotif.getText().toString().isEmpty() && !tvDate.getText().toString().equals("...")){
-                            progressDialog.setMessage("Enregistrement en cours...");
-                            progressDialog.show();
-                            add_meeting(dialog, edtSubject.getText().toString(), edtDescMotif.getText().toString(), tvDate.getText().toString(), spTime.getSelectedItem().toString());
-                        }else{
-                            Toast.makeText(getActivity(), "Sélectionner date, entrer un sujet et description pour demande de rendez-vous avec un notaire....", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                .setMessage(message);
+//                .setPositiveButton("Enregistrer", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialoginterface, int i) {
+//                        if (!edtSubject.getText().toString().isEmpty() && !edtDescMotif.getText().toString().isEmpty() && !tvDate.getText().toString().equals("...")){
+//                            progressDialog.setMessage("Enregistrement en cours...");
+//                            progressDialog.show();
+//                            //add_meeting(dialog, edtSubject.getText().toString(), edtDescMotif.getText().toString(), tvDate.getText().toString(), spTime.getSelectedItem().toString());
+//                        }else{
+//                            Toast.makeText(getActivity(), "Sélectionner date, entrer un sujet et description pour demande de rendez-vous avec un notaire....", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
 
         dialog.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
             @Override
@@ -206,17 +207,12 @@ public class ProfilFragment extends Fragment {
                 dialog.cancel();
             }
         });
-        dialog.show();
+        final AlertDialog show = dialog.show();
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        dialogInterface.cancel();
-                    }
-                });
+            public void onClick(View v) {
+                show.dismiss();
             }
         });
 
@@ -226,7 +222,7 @@ public class ProfilFragment extends Fragment {
                 if (!edtSubject.getText().toString().isEmpty() && !edtDescMotif.getText().toString().isEmpty() && !tvDate.getText().toString().equals("...")){
                     progressDialog.setMessage("Enregistrement en cours...");
                     progressDialog.show();
-                    add_meeting(dialog, edtSubject.getText().toString(), edtDescMotif.getText().toString(), tvDate.getText().toString(), spTime.getSelectedItem().toString());
+                    add_meeting(show, edtSubject.getText().toString(), edtDescMotif.getText().toString(), tvDate.getText().toString(), spTime.getSelectedItem().toString());
                 }else{
                     Toast.makeText(getActivity(), "Sélectionner date, entrer un sujet et description pour demande de rendez-vous avec un notaire....", Toast.LENGTH_SHORT).show();
                 }
@@ -274,7 +270,7 @@ public class ProfilFragment extends Fragment {
         }
     }
 
-    private void add_meeting(AlertDialog.Builder  dialog,String subject, String description, String date, String time) {
+    private void add_meeting(final AlertDialog dialog, String subject, String description, String date, String time) {
 
         String apiLink = API_LINK+"meet/meet.php";
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
@@ -294,18 +290,24 @@ public class ProfilFragment extends Fragment {
                 JSONObject json = response;
                 try {
                     JSONArray array = json.getJSONArray("response");
+//ACCEPTER //DECLINER //NON-DISPONIBLE //ATTENTE
+
 
                     //JSONArray array = json.getJSONArray("response");
 
                     //notaireadapter.addAll(Notaire.fromJSONArray(json.getJSONArray("response")));
-                    if(array.getJSONObject(0).getString("key").equals("SUCCESS")){
+                    if(array.getJSONObject(0).getBoolean("status")){
+                        dialog.dismiss();
                         progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Rendez-vous en attente de confirmation de "+selNotaire.getPrenom_notaire()+" "+selNotaire.getNom_notaie()+".", Toast.LENGTH_SHORT).show();
                     }else{
+                        Toast.makeText(getActivity(), "Erreur lors du sauvegarde, vérifier et éssayer a nouveau...", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(getActivity(), "Erreur lors du sauvegarde, vérifier et éssayer a nouveau [0.1]...", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             }
@@ -313,6 +315,7 @@ public class ProfilFragment extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                Toast.makeText(getActivity(), "Erreur lors du sauvegarde, vérifier et éssayer a nouveau [0.2]...", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });
@@ -324,7 +327,7 @@ public class ProfilFragment extends Fragment {
         RequestParams params = new RequestParams();
         params.put("clientID", sharedPreferences.getString("iduser", null));
         params.put("notaireID", selNotaire.getUserNoID());
-        params.put("rateValue", rateValue);
+        params.put("rateValue", 1);
 
         client.post(apiLink, params, new JsonHttpResponseHandler(){
 
@@ -352,6 +355,8 @@ public class ProfilFragment extends Fragment {
                 progressDialog.dismiss();
             }
         });
+
+        progressDialog.dismiss();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

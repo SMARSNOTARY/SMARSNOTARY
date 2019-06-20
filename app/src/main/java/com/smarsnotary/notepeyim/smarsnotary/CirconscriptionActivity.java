@@ -42,10 +42,8 @@ public class CirconscriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.smarsnotary.notepeyim.smarsnotary.R.layout.activity_circonscription);
-
         //get extra from intent
         objDept = (Departement) getIntent().getSerializableExtra("selected_departement");
-
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.toolbar);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
@@ -55,12 +53,9 @@ public class CirconscriptionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setTitle("Circonsription "+objDept.getDesc_departement());
+        getSupportActionBar().setTitle("Juridiction "+objDept.getDesc_departement());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
 
         gvCommune = findViewById(com.smarsnotary.notepeyim.smarsnotary.R.id.gvCommune);
         gvCommune.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,7 +70,7 @@ public class CirconscriptionActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(CirconscriptionActivity.this);
 
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("connexion en cours...");
+        progressDialog.setMessage("Téléchargement des commune de la juridiction "+objDept.getDesc_departement()+" en cours...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setCancelable(false);
         progressDialog.show();
@@ -85,6 +80,7 @@ public class CirconscriptionActivity extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                progressDialog.show();
                 get_commune();
                 swipeRefresh.setRefreshing(false);
             }
@@ -105,7 +101,6 @@ public class CirconscriptionActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -114,7 +109,6 @@ public class CirconscriptionActivity extends AppCompatActivity {
         Resources res= getResources();
         communeadapter = new CommuneAdapter(getApplicationContext(), com.smarsnotary.notepeyim.smarsnotary.R.layout.item_commune, Liste_commune, res);
         gvCommune.setAdapter(communeadapter);
-
 
         String apiLink= API_LINK+"commune/commune.php?dept="+objDept.getId_departement();
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
